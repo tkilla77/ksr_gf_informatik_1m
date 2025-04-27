@@ -58,45 +58,39 @@ def draw_square(x,y,col,width):
         turi.forward(2*L)
         turi.right(90)
 
-def replace_char_at_index(s,c,i):
-    # replace char at index i in string with char c
-    return s[:i] + c + s[i+1:]
-
-h_bin_prev = "xxxxxx"
-m_bin_prev = "xxxxxx"
-s_bin_prev = "xxxxxx"
-
-while True:
-    screen.tracer(0, 0)
-    now = datetime.now()
-    h = now.hour
-    m = now.minute
-    s = now.second
+def show_time(time):
+    h = time.hour
+    m = time.minute
+    s = time.second
     h_bin = decimal_to_binary(h)
     m_bin = decimal_to_binary(m)
     s_bin = decimal_to_binary(s)
 
+    screen.tracer(0, 0)
+
     for i in range(6):
-        if i > 0 and h_bin[i] != h_bin_prev[i]:
-            h_bin_prev = replace_char_at_index(h_bin_prev,h_bin[i], i)
+        if i > 0:
             if h_bin[i] == "1":
                 draw_circle(x_offset+i*x_dist,y_offset,"red",5)
             else:
                 draw_circle(x_offset+i*x_dist,y_offset,col_symb_0,5)            
 
-        if m_bin[i] != m_bin_prev[i]:
-            m_bin_prev = replace_char_at_index(m_bin_prev,m_bin[i], i)
-            if m_bin[i] == "1":
-                draw_cross(x_offset+i*x_dist,0,myblue,5)
-            else:
-                draw_cross(x_offset+i*x_dist,0,col_symb_0,5)
+        if m_bin[i] == "1":
+            draw_cross(x_offset+i*x_dist,0,myblue,5)
+        else:
+            draw_cross(x_offset+i*x_dist,0,col_symb_0,5)
     
-        if s_bin[i] != s_bin_prev[i]:
-            s_bin_prev = replace_char_at_index(s_bin_prev,s_bin[i], i)
-            if s_bin[i] == "1":
-                draw_square(x_offset+i*x_dist,-y_offset,"green",5)
-            else:
-                draw_square(x_offset+i*x_dist,-y_offset,col_symb_0,5)
+        if s_bin[i] == "1":
+            draw_square(x_offset+i*x_dist,-y_offset,"green",5)
+        else:
+            draw_square(x_offset+i*x_dist,-y_offset,col_symb_0,5)
     screen.update()
-            
-    #print("{0}:{1}:{2}".format(h,m,s))
+
+
+def show_clock():
+    while True:
+        now = datetime.now()
+        show_time(now)
+
+if __name__ == "__main__":
+    show_clock()
