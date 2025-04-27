@@ -15,7 +15,7 @@ while True:
     inp = turtle.textinput("What time is it?", "Enter 24h time")
     print(time)
     if inp == str(time):
-        tkinter.messagebox.showinfo(message=f"Correct: {str(time)}", geometry="+0+0")
+        tkinter.messagebox.showinfo(message=f"Correct: {str(time)}")
     else:
-        tkinter.messagebox.showerror(message=f"Incorrect: {str(time)}", geometry="+0+0")
+        tkinter.messagebox.showerror(message=f"Incorrect: {str(time)}")
 
