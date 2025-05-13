@@ -19,6 +19,7 @@ def fill_zeros(b, digits):
     while len(b) < digits:
         b = "0" + b
     return b
+
 def binary_add(a,b):
     """Addiert zwei Binärzahlen beliebiger Länge."""
     n = max(len(a), len(b))
@@ -78,5 +79,5 @@ a = 42
 b = 19
 a_bin = decimal_to_binary(a)
 b_bin = decimal_to_binary(b)
-difference = binary_subtraction(a_bin, b_bin)
+difference = binary_subtraction(a_bin, b_bin, 8)
 print(f"{a} - {b} = {a_bin} - {b_bin} = {difference} = {binary_to_decimal(difference)}")
