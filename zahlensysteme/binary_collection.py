@@ -75,9 +75,10 @@ def binary_subtraction(a, b, stellen=8):
         result = result[1:]  # Vorderstes Bit auslassen
     return result
 
-a = 42
-b = 19
-a_bin = decimal_to_binary(a)
-b_bin = decimal_to_binary(b)
-difference = binary_subtraction(a_bin, b_bin, 8)
-print(f"{a} - {b} = {a_bin} - {b_bin} = {difference} = {binary_to_decimal(difference)}")
+a_dec = 42
+b_dec = 19
+a_bin = decimal_to_binary(a_dec)
+b_bin = decimal_to_binary(b_dec)
+difference_bin = binary_subtraction(a_bin, b_bin, 8)
+difference_dec = binary_to_decimal(difference_bin)
+print(f"{a_dec} - {b_dec} = {a_bin} - {b_bin} = {difference_bin} = {difference_dec}")
